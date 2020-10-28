@@ -25,6 +25,8 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'haml-rails'
+gem 'devise'
+gem 'devise-bootstrap-views'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -46,9 +48,14 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
-  # Easy installation and use of web drivers to run system tests with browsers
+  gem 'poltergeist'
   gem 'webdrivers'
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
+end
+
+group :test, :development do
+  gem 'rspec-rails', '~> 4.0.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
