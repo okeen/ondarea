@@ -1,2 +1,3 @@
-%h1 Books#index
-%p Find me in app/views/books/index.html.haml
+%h1 Welcome to the Library of Babylon
+
+= table_for @books, {}, :name, :isbn, :author, :publisher

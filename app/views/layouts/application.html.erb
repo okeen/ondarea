@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>Ondarea</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Library of Alexandria" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,6 +13,13 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <%= render 'layouts/navigation' %>
+    </header>
+
+    <div class='container'>
+      <%= render_flash %>
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -27,6 +27,10 @@ gem 'jbuilder', '~> 2.7'
 gem 'haml-rails'
 gem 'devise'
 gem 'devise-bootstrap-views'
+gem 'kaminari'
+
+gem 'isbn_validation'
+gem 'carrierwave-aws'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -34,6 +38,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 4.0.1'
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -52,10 +58,7 @@ group :test do
   gem 'webdrivers'
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
-end
-
-group :test, :development do
-  gem 'rspec-rails', '~> 4.0.1'
+  gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
