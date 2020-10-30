@@ -20,8 +20,9 @@ RSpec.describe BooksController, type: :controller do
         sign_in(users(:basic))
         get :index
       end
+
       it "assigns @books" do
-        expect(assigns(:books)).to eq([book])
+        expect(assigns(:books).to_a).to eq([book])
       end
       it "renders the index template" do
         expect(response).to render_template("index")

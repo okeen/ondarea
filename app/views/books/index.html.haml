@@ -1,3 +1,5 @@
-%h1 Welcome to the Library of Babylon
+%h1 Books catalogue
 
 = table_for @books, {}, :name, :isbn, :author, :publisher
+
+= paginate @books

@@ -1,0 +1,4 @@
+= form_for @bulk_books_import, url: [@bulk_books_import] do |f|
+  = f.file_field :uploaded_file, label: 'CSV file'
+  -# = link_to_upload_file(f)
+  = f.submit :"Send File", class: 'btn btn-primary'

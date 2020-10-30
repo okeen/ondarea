@@ -1,0 +1,4 @@
+%tr[bulk_import_item]
+  - BulkBooksImport.IMPORTABLE_ATTRIBUTE_NAMES.each do |attr|
+    = table_column_with_errors_for_field(bulk_import_item, attr)
+  %td= full_error_messages_for_import_item(bulk_import_item)

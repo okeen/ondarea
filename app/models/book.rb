@@ -2,6 +2,6 @@ class Book < ApplicationRecord
   validates :isbn, :title,
             presence: true
   validates :isbn,
-            uniqueness: true
-
+            uniqueness: true,
+            isbn_format: true
 end

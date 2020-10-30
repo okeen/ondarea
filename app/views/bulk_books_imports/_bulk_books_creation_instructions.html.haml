@@ -1,0 +1,20 @@
+.card
+  .card-body
+    %p You can upload a CSV file containing information about the books you want to register.
+    %br
+    %h3
+      %strong Important information
+    %p The CSV file needs to have a very strict syntax to work. The fields marked with an asterisk are mandatory.
+    %br
+    %br
+
+    = table_for BulkBooksImport.IMPORTABLE_ATTRIBUTE_NAMES, { model_name: 'BulkBooksImport', partial: 'bulk_import_field'}, :field, :required, :example
+
+    .card-footer
+      %h2= icon('info-circle')
+      %p
+        = 'You can download an example CSV file'
+        = link_to "Here", "/examples/example_books.csv", target: :_blank
+    %br
+
+  %br

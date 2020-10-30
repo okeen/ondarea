@@ -1,0 +1,5 @@
+%h1 Your uploads
+= link_to "Import books", [:new, :bulk_books_import], class: "btn btn-primary mb-4"
+= table_for @bulk_books_imports, {}, :date, :books, :file
+
+= paginate @bulk_books_imports

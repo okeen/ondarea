@@ -1,0 +1,4 @@
+%tr[bulk_books_import]
+  %td= bulk_books_import.created_at.to_s(:short)
+  %td= bulk_books_import.bulk_import_items.count
+  %td= link_to bulk_books_import.uploaded_file_name, bulk_books_import.uploaded_file_url, target: :_blank
