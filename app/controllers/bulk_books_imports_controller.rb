@@ -27,7 +27,7 @@ class BulkBooksImportsController < ApplicationController
 
   def update
     if @bulk_books_import.complete!
-      redirect_to [:bulk_books_imports], notice: t('.success')
+      redirect_to @bulk_books_import, notice: t('.success')
     else
       flash.now[:error] = t(".error")
       render "edit"

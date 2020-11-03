@@ -9,6 +9,9 @@ RSpec.describe BulkBooksImport, type: :model do
                             File.open(File.join(Rails.root, '/test/fixtures/books/example_books.csv'))
                         )
   }
+  it "sets an uuid" do
+    expect(subject.uuid).to be_present
+  end
 
   describe "valid?" do
     context "with no uploaded file" do
@@ -37,10 +40,6 @@ RSpec.describe BulkBooksImport, type: :model do
   describe "save" do
     after do
       subject.save
-    end
-
-    it "calls to sets the uuid" do
-      expect(subject).to receive(:set_uuid)
     end
 
     it "calls to clone the uploaded file fields" do

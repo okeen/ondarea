@@ -11,7 +11,7 @@ class BulkBooksImport < ApplicationRecord
   @@IMPORTABLE_ATTRIBUTE_NAMES= %W(title author isbn publisher publication_date)
   cattr_reader :IMPORTABLE_ATTRIBUTE_NAMES
 
-  before_create :set_uuid
+  after_initialize :set_uuid
   after_create :clone_uploaded_file_fields
 
   enum status: [:pending, :with_errors, :started, :finished]
@@ -35,7 +35,7 @@ class BulkBooksImport < ApplicationRecord
   protected
 
   def set_uuid
-    self.uuid ||= SecureRandom.uuid
+    self.uuid ||= SecureRandom.hex(8)
   end
 
   def clone_uploaded_file_fields

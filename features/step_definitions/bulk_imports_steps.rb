@@ -47,6 +47,8 @@ end
 
 And(/^I complete the books import$/) do
   binding.pry
+  # For some reason I can't understand, the CarrierWave uploader thinks the attribute is empty when it actually isn't
+  # (please check @bulk_import.uploaded_file inside pry). I guess it is a matter of investing time to figure out the proper way to test this.
   click_button "Finish Import"
 end
 

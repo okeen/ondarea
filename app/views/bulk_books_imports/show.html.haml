@@ -1,5 +1,6 @@
-%h1 Import #{@bulk_books_import.uploaded_file_name}
+%h1.pb-4= @bulk_books_import.uploaded_file_name
 
-= table_for @bulk_books_import.bulk_import_items, { partial: 'bulk_import_item' }, :title, :author, :isbn, :publisher, :publication_date, :errors
+%h3 Books imported
+= table_for @bulk_books_import.bulk_import_items, { partial: 'bulk_import_item' }, :title, :author, :isbn, :publisher, :publication_date
 
-= link_to "Back", [:new, :bulk_books_import], class: "btn btn-info"
+= link_to "Back to list", [:bulk_books_import], class: "btn btn-info"
