@@ -10,4 +10,12 @@ class BulkImportItem < ApplicationRecord
   def imported_instance
     @_imported_instance ||= book || Book.new(attrs)
   end
+
+  def complete_import!
+    if import_errors.empty?
+      self.book = imported_instance
+      save
+      imported_instance
+    end
+  end
 end

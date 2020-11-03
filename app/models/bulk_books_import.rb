@@ -1,6 +1,6 @@
 class BulkBooksImport < ApplicationRecord
   belongs_to :user
-  has_many :bulk_import_items
+  has_many :bulk_import_items, dependent: :destroy
 
   mount_uploader :uploaded_file, BooksImportUploader
 
@@ -14,12 +14,22 @@ class BulkBooksImport < ApplicationRecord
   before_create :set_uuid
   after_create :clone_uploaded_file_fields
 
+  enum status: [:pending, :with_errors, :started, :finished]
+
   def extension_whitelist
     %w(csv)
   end
 
   def add_import_item(attrs)
     bulk_import_items.create(attrs: attrs)
+  end
+
+  def complete!
+    if valid? && started? && valid_import_items
+      books = bulk_import_items.map &:complete_import!
+      finished!
+      return books.count == bulk_import_items.count
+    end
   end
 
   protected
@@ -33,6 +43,11 @@ class BulkBooksImport < ApplicationRecord
   end
 
   def valid_import_items
-    errors[:base] << "There are invalid import items" if bulk_import_items.any? { |item| item.import_errors.messages.any? }
+    if bulk_import_items.any? { |item| item.import_errors.messages.any? }
+      errors[:base] << "There are invalid import items"
+      false
+    else
+      true
+    end
   end
 end

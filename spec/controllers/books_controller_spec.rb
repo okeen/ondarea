@@ -4,7 +4,8 @@ RSpec.describe BooksController, type: :controller do
   fixtures :users, :books
 
   describe "GET index" do
-    let(:book) { books(:basic) }
+    let(:book)         { books(:basic) }
+    let(:another_book) { books(:another_basic) }
     before do
       get :index
     end
@@ -22,7 +23,7 @@ RSpec.describe BooksController, type: :controller do
       end
 
       it "assigns @books" do
-        expect(assigns(:books).to_a).to eq([book])
+        expect(assigns(:books).to_a).to eq([book, another_book])
       end
       it "renders the index template" do
         expect(response).to render_template("index")

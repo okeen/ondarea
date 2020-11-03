@@ -19,6 +19,9 @@ RSpec.describe BooksCsvImportCreationService, type: :model do
     end
 
     context "with a valid BulkBooksImport instance" do
+      it "sets the status as started" do
+        expect(import).to receive(:started!)
+      end
       it "calls the BulkBooksImport to import the uploaded items" do
         expect(import).to receive(:add_import_item).with(
           {
@@ -33,7 +36,7 @@ RSpec.describe BooksCsvImportCreationService, type: :model do
           {
             title: "Don palotes",
             author: "Anonymous",
-            isbn: "9783161484101",
+            isbn: "9781400132171",
             publisher: "Freelance",
             publication_date: "1805/01/01"
           }

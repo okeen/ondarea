@@ -9,9 +9,13 @@ Given(/^a logged in user exists$/) do
 end
 
 Given(/^some book imports exist$/) do
-  @bulk_import = @user.bulk_books_imports.create(
+
+  service = BooksCsvImportCreationService.new(
+    user: @user,
     uploaded_file: Rack::Test::UploadedFile.new(
       File.open(File.join(Rails.root, '/test/fixtures/books/example_books.csv'))
     )
   )
+  service.save
+  @bulk_import = service.instance
 end

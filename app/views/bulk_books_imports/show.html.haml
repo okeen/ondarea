@@ -1,7 +1,5 @@
-%h1 Import Books
+%h1 Import #{@bulk_books_import.uploaded_file_name}
 
-= form_for  @bulk_books_import, url: [:complete,  @bulk_books_import] do |f|
-  = table_for @bulk_books_import.bulk_import_items, { partial: 'bulk_import_item' }, :title, :author, :isbn, :publisher, :publication_date, :errors
-  = link_to "Back", [:new, :bulk_books_import], class: "btn btn-info"
-  - if @bulk_books_import.valid?
-    = f.submit "Finish Import", class: 'btn btn-primary'
+= table_for @bulk_books_import.bulk_import_items, { partial: 'bulk_import_item' }, :title, :author, :isbn, :publisher, :publication_date, :errors
+
+= link_to "Back", [:new, :bulk_books_import], class: "btn btn-info"

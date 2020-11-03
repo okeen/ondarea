@@ -21,7 +21,7 @@ Then(/^I should see the list of books included in the file$/) do
 
     expect(page).to have_selector "td", text: "Don palotes"
     expect(page).to have_selector "td", text: "Anonymous"
-    expect(page).to have_selector "td", text: "9783161484101"
+    expect(page).to have_selector "td", text: "9781400132171"
     expect(page).to have_selector "td", text: "Freelance"
     expect(page).to have_selector "td", text: "1805/01/01"
   end
@@ -43,4 +43,19 @@ Then(/^I should see the list of book imports$/) do
       expect(page).to have_selector "td a", text: @bulk_import.uploaded_file_name
     end
   end
+end
+
+And(/^I complete the books import$/) do
+  binding.pry
+  click_button "Finish Import"
+end
+
+Then(/^I should see the recently created imports$/) do
+  within "tr#bulk_books_import_#{@bulk_import.id}" do
+    expect(page).to have_selector "th", text: @bulk_import.created_at.to_s(:short)
+    expect(page).to have_selector "th", text: 2
+    expect(page).to have_selector "th a", text: @bulk_import.uploaded_file_url
+    expect(page).to have_selector "th", text: 'finished'
+  end
+
 end

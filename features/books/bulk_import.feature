@@ -21,10 +21,12 @@ Feature: Books Bulk Import
     And  I upload a CSV file containing invalid books
     Then I should see the errors of each book
 
-  @wip
   Scenario: Complete the items import
-    Given a books CSV upload was started
+    Given some book imports exist
     When I go to the recently started books upload
+    And I complete the books import
+    Then I should see the recently created imports
+
 
 
 

@@ -40,6 +40,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 4.0.1'
   gem 'dotenv-rails'
+  gem 'pry'
+  gem 'launchy'
 end
 
 group :development do
@@ -56,7 +58,6 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
-  gem 'poltergeist'
   gem 'webdrivers'
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
