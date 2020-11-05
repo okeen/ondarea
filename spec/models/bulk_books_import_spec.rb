@@ -6,7 +6,8 @@ RSpec.describe BulkBooksImport, type: :model do
   subject {
     BulkBooksImport.new user: user,
                         uploaded_file: Rack::Test::UploadedFile.new(
-                            File.open(File.join(Rails.root, '/test/fixtures/books/example_books.csv'))
+                            File.open(File.join(Rails.root, '/test/fixtures/books/example_books.csv')),
+                            "text/csv"
                         )
   }
   it "sets an uuid" do

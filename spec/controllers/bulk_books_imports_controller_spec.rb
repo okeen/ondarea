@@ -5,7 +5,8 @@ RSpec.describe BulkBooksImportsController, type: :controller do
   let(:user)   { users('basic') }
   let(:csv_file) {
     Rack::Test::UploadedFile.new(
-      File.open(File.join(Rails.root, '/test/fixtures/books/example_books.csv'))
+      File.open(File.join(Rails.root, '/test/fixtures/books/example_books.csv')),
+      "text/csv"
     )
   }
   let(:import) { BulkBooksImport.create(
@@ -91,7 +92,8 @@ RSpec.describe BulkBooksImportsController, type: :controller do
         post :create, params: {
             bulk_books_import: {
                 uploaded_file: Rack::Test::UploadedFile.new(
-                    File.open(File.join(Rails.root, '/test/fixtures/books/example_books.csv'))
+                    File.open(File.join(Rails.root, '/test/fixtures/books/example_books.csv')),
+                    "text/csv"
                 )
             }
         }

@@ -6,7 +6,8 @@ RSpec.describe BooksCsvImportCreationService, type: :model do
   let(:user)     { users('basic') }
   let(:csv_file) {
     Rack::Test::UploadedFile.new(
-      File.open(File.join(Rails.root, '/test/fixtures/books/example_books.csv'))
+      File.open(File.join(Rails.root, '/test/fixtures/books/example_books.csv')),
+      "text/csv"
     )
   }
 

@@ -13,7 +13,8 @@ Given(/^some book imports exist$/) do
   service = BooksCsvImportCreationService.new(
     user: @user,
     uploaded_file: Rack::Test::UploadedFile.new(
-      File.open(File.join(Rails.root, '/test/fixtures/books/example_books.csv'))
+      File.open(File.join(Rails.root, '/test/fixtures/books/example_books.csv')),
+      "text/csv"
     )
   )
   service.save

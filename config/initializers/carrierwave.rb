@@ -44,6 +44,6 @@ CarrierWave.configure do |config|
         stub_responses:    Rails.env.test? # Optional, avoid hitting S3 actual during tests
     }
   end
-  config.cache_dir = "tmp/uploads"
+  # config.cache_dir = "tmp/uploads"
   config.asset_host = ActionController::Base.asset_host
 end

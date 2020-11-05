@@ -53,8 +53,8 @@ module ApplicationHelper
     table.html_safe
   end
 
-  def render_flash
-    flash.map do |name, msg|
+  def render_flash(source = flash)
+    source.map do |name, msg|
       next if msg.empty?
 
       content_tag :div, id: 'error_messages', class: "flash alert #{bootstrap_class_for_flash(name)} fade show", 'data-alert' => 'true' do

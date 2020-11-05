@@ -15,7 +15,9 @@ class BulkBooksImportsController < ApplicationController
     if import_service.save
       redirect_to edit_bulk_books_import_path(import_service.instance), success: t(".success")
     else
-      redirect_to [:new, :bulk_books_import], error: t(".error")
+      @bulk_books_import = import_service.instance
+      flash.now[:error] = t(".error")
+      render "new"
     end
   end
 

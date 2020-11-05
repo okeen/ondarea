@@ -1,4 +1,5 @@
-%h1 Import #{@bulk_books_import.uploaded_file_name}
+%h1.mb-4 Import #{@bulk_books_import.uploaded_file_name}
+= import_error_messages
 
 = form_for @bulk_books_import, url: [@bulk_books_import] do |f|
   = table_for @bulk_books_import.bulk_import_items, { partial: 'bulk_import_item' }, :title, :author, :isbn, :publisher, :publication_date, :errors

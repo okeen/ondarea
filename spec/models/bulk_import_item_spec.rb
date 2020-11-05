@@ -7,7 +7,8 @@ RSpec.describe BulkImportItem, type: :model do
   let(:import) { BulkBooksImport.create(
       user: user,
       uploaded_file: Rack::Test::UploadedFile.new(
-          File.open(File.join(Rails.root, '/test/fixtures/books/example_books.csv'))
+          File.open(File.join(Rails.root, '/test/fixtures/books/example_books.csv')),
+          "text/csv"
       )
     )
   }

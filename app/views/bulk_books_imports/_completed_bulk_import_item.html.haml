@@ -1,0 +1,3 @@
+%tr[completed_bulk_import_item]
+  - BulkBooksImport.IMPORTABLE_ATTRIBUTE_NAMES.each do |attr|
+    %td= completed_bulk_import_item.imported_instance.attributes[attr]

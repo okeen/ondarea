@@ -1,5 +1,8 @@
 en:
   bulk_books_imports:
+    create:
+      error: There was an error processing the uploaded file
+
     bulk_import_field:
       example_values:
         title: Don Quijote
