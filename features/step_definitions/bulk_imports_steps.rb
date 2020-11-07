@@ -4,7 +4,9 @@ When(/^I upload the CSV file "([^"]*)"$/) do |file_name|
 end
 
 When(/^I upload a CSV file containing the books$/) do
-  step 'I upload the CSV file "example_books.csv"'
+  VCR.use_cassette("") do
+    step 'I upload the CSV file "example_books.csv"'
+  end
 end
 
 And(/^I upload a CSV file containing invalid books$/) do
@@ -27,13 +29,11 @@ Then(/^I should see the list of books included in the file$/) do
   end
 end
 
-
 And(/^I should see the errors of each book$/) do
   within "#bulk_import_items" do
     expect(page).to have_selector "td", text: "title: can't be blank"
   end
 end
-
 
 Then(/^I should see the list of book imports$/) do
   within "#bulk_books_imports" do

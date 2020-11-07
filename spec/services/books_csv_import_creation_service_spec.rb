@@ -43,6 +43,10 @@ RSpec.describe BooksCsvImportCreationService, type: :model do
           }
         )
       end
+      it "enqueues an NewUploadNotificationJob" do
+        subject.save
+        expect(NewUploadNotificationJob).to receive(:perform_later).with(import)
+      end
     end
 
     context "with an invalid BulkBooksImport instance" do

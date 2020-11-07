@@ -11,6 +11,7 @@ Feature: Books Bulk Import
     When I go to the import books list screen
     Then I should see the list of book imports
 
+    @vcr
   Scenario: Upload a new csv file containing books
     When I go to the import books screen
     And  I upload a CSV file containing the books

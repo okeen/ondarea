@@ -21,6 +21,7 @@ class BooksCsvImportCreationService
           publication_date: item[4]
         )
       end
+      NewUploadNotificationJob.perform_later(@instance)
     end
   end
 
